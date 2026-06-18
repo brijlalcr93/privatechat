@@ -386,7 +386,7 @@ export default function ChatPage() {
       <div className="flex-1 flex overflow-hidden relative">
         
         {/* Sidebar panel */}
-        <div className="w-full md:w-[360px] border-r border-border bg-card/15 backdrop-blur-md flex flex-col shrink-0">
+        <div className={`${activeChat ? 'hidden md:flex' : 'flex'} w-full md:w-[360px] border-r border-border bg-card/15 backdrop-blur-md flex-col shrink-0`}>
           
           {/* Direct chat user search bar */}
           <div className="p-4 flex flex-col gap-3">
@@ -560,12 +560,20 @@ export default function ChatPage() {
         </div>
 
         {/* Chat Window Panel */}
-        <div className="flex-1 flex flex-col bg-card/5">
+        <div className={`${activeChat ? 'flex' : 'hidden md:flex'} flex-1 flex-col bg-card/5`}>
           {activeChat && currentDetails ? (
             <>
               {/* Header */}
-              <div className="h-16 border-b border-border px-6 bg-card/15 backdrop-blur-md flex items-center justify-between z-10">
-                <div className="flex items-center gap-3">
+              <div className="h-16 border-b border-border px-4 md:px-6 bg-card/15 backdrop-blur-md flex items-center justify-between z-10">
+                <div className="flex items-center gap-2 md:gap-3">
+                  {/* Mobile Back Button */}
+                  <button
+                    onClick={() => setActiveChat(null)}
+                    className="md:hidden p-1.5 rounded-lg hover:bg-secondary text-muted hover:text-foreground transition-all cursor-pointer"
+                    title="Back to Chats"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                  </button>
                   {/* Chat Avatar */}
                   <div className="relative">
                     {currentDetails.avatar ? (
@@ -717,7 +725,7 @@ export default function ChatPage() {
               initial={{ opacity: 0, x: 260 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 260 }}
-              className="w-64 border-l border-border bg-card/25 backdrop-blur-md flex flex-col shrink-0 z-30"
+              className="absolute md:relative right-0 top-0 bottom-0 h-full w-72 md:w-64 border-l border-border bg-background md:bg-card/25 backdrop-blur-md flex flex-col shrink-0 z-30 shadow-2xl md:shadow-none"
             >
               {/* Header */}
               <div className="h-16 border-b border-border flex items-center justify-between px-4">
