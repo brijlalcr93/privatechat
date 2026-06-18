@@ -21,7 +21,9 @@ export default function ProfilePage() {
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [avatar, setAvatar] = useState('');
+  /* const [avatar, setAvatar] = useState('');*/
+
+  const [avatar, setAvatar] = useState(AVATAR_PRESETS[0]);
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -131,9 +133,8 @@ export default function ProfilePage() {
                           key={idx}
                           type="button"
                           onClick={() => setAvatar(preset)}
-                          className={`w-7 h-7 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
-                            avatar === preset ? 'border-primary scale-105' : 'border-transparent opacity-80'
-                          }`}
+                          className={`w-7 h-7 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${avatar === preset ? 'border-primary scale-105' : 'border-transparent opacity-80'
+                            }`}
                         >
                           <img src={preset} alt="preset" className="w-full h-full object-cover" />
                         </button>
