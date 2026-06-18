@@ -1,0 +1,10 @@
+node_modules
+.env
+.env.*
+dist
+npm-debug.log
+.next
+frontend/node_modules
+.git
+README.md
+Dockerfile

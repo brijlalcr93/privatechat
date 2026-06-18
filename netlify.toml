@@ -1,0 +1,11 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Set your deployed backend API URL in Netlify site settings.
+  # NEXT_PUBLIC_API_URL = "https://your-backend-domain.com/api"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
