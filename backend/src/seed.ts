@@ -9,10 +9,12 @@ import { Admin } from './models/Admin';
 import { Log } from './models/Log';
 
 // Force Node.js to use Google DNS when running locally to resolve MongoDB Atlas SRV records
-try {
-  dns.setServers(['8.8.8.8', '8.8.4.4']);
-} catch (err) {
-  console.warn('Failed to set custom DNS servers, using default resolver.', err);
+if (!process.env.RENDER) {
+  try {
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
+  } catch (err) {
+    console.warn('Failed to set custom DNS servers, using default resolver.', err);
+  }
 }
 
 dotenv.config();

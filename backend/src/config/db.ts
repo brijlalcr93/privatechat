@@ -2,10 +2,12 @@ import dns from 'dns';
 import mongoose from 'mongoose';
 
 // Force Node.js to use Google DNS when running locally to resolve MongoDB Atlas SRV records
-try {
-  dns.setServers(['8.8.8.8', '8.8.4.4']);
-} catch (err) {
-  // Ignore/warn in case of error in environments that block setting DNS servers
+if (!process.env.RENDER) {
+  try {
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
+  } catch (err) {
+    // Ignore/warn in case of error in environments that block setting DNS servers
+  }
 }
 
 export const connectDB = async () => {

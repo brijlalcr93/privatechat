@@ -22,7 +22,7 @@ connectDB();
 
 // Middlewares
 app.use(cors({
-  origin: '*', // In production, replace with specific origins
+  origin: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -43,7 +43,7 @@ app.get('/health', (req, res) => {
 // Setup Socket.IO Server
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: true,
     methods: ['GET', 'POST'],
     credentials: true
   }
